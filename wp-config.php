@@ -20,16 +20,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'globalfashiontest');
+define('DB_NAME', 'u9211913_fashionpos');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'u9211913_posuser');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'MnaK&hZ%rruaS2m5');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'aigootan.com');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
@@ -84,6 +84,18 @@ define('WP_DEBUG', false);
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Adapt home and site url dynamically. */
+define('WP_CACHE', true);
+$currenthost = $_SERVER['HTTP_HOST'];
+$mypos = strpos($currenthost, 'localhost:8888');
+if ($mypos === false) {
+	define('WP_HOME','http://aigootan.com');
+	define('WP_SITEURL','http://aigootan.com');
+} else {
+	define('WP_HOME','http://localhost:8888/globalfashionpos');
+	define('WP_SITEURL','http://localhost:8888/globalfashionpos');
+}
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
